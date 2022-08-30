@@ -22,6 +22,7 @@
     <button onclick=fullScreenView()>View in Full Screen</button>
     <div class="coordinate"></div>
     <button class="print-map">Print Map</button>
+    <button class="zoom-to-layer">Zoom to Layer</button>
 </body>
 </html>
 
@@ -90,7 +91,7 @@
     });
 
     iyte.addTo(marker);
-    //marker.addTo(map);
+    marker.addTo(map);
 
     // Leaflet Search
     L.Control.geocoder().addTo(map);
@@ -107,6 +108,11 @@
     }
 
     L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+    // Zoom to Layer
+    $('.zoom-to-layer').click(function() {
+        map.setView([38.9573415, 35.240741], 6)
+    })
 
 
 </script>
