@@ -40,12 +40,16 @@
     map.zoomControl.setPosition('topright');
 
     // Adding OSM Tilelayer
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
     // Adding Marker in The Center of Map
-    L.marker([38.9573415, 35.240741]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup();
+    var singleMarker = L.marker([38.9573415, 35.240741]).bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup();
 
     // Add Map Scale
     L.control.scale({ position: 'bottomright' }).addTo(map);
@@ -86,9 +90,23 @@
     });
 
     iyte.addTo(marker);
-    marker.addTo(map);
+    //marker.addTo(map);
 
     // Leaflet Search
     L.Control.geocoder().addTo(map);
+
+    // Leaflet Layer Control
+    var baseMaps = {
+        'OSM': osm,
+        '3D': Esri_WorldImagery
+    }
+
+    var overlayMaps = {
+        'GeoJSON Markers': marker,
+        'Singe Marker': singleMarker
+    }
+
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
+
 
 </script>
