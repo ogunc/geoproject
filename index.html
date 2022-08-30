@@ -15,18 +15,42 @@
 </head>
 <body>
     <div id="map"></div>
+    <button onclick=fullScreenView()>View in Full Screen</button>
+    <div class="coordinate"></div>
 </body>
 </html>
 
 <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
 
+    // Map Class Initialize
     var map = L.map('map').setView([38.9573415, 35.240741], 6);
+    map.zoomControl.setPosition('topright');
+
+    // Adding OSM Tilelayer
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    // Adding Marker in The Center of Map
     L.marker([38.9573415, 35.240741]).addTo(map).bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup();
+
+    // Add Map Scale
+    L.control.scale({ position: 'bottomright' }).addTo(map);
+
+    // Full Screen Map View
+    var mapId = document.getElementById('map');
+    function fullScreenView() {
+        mapId.requestFullscreen();
+    }
+
+    // Map Coordinate Display
+    map.on('mousemove', function (e) {
+        console.log(e)
+        $('.coordinate').html(`Lat: ${e.latlng.lat} Lng: ${e.latlng.lng}`)
+    })
+
 
 </script>
