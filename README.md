@@ -7,5 +7,5 @@
 - Distance and area measurement on leaflet map
 - Marker cluster with point data
 - Search location by name (geocode)
-- Layer controller
+- Layer controller (https://leaflet-extras.github.io/leaflet-providers/preview/)
 - Zoom to layer function
