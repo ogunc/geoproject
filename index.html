@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./lib/leaflet-measure.css">
     <link rel="stylesheet" href="./lib/MarkerCluster.css">
     <link rel="stylesheet" href="./lib/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css"/>
     <title>Leaflet Geoproject</title>
     <style>
         #map {
@@ -30,6 +31,7 @@
 <script src="./lib/leaflet-measure.js"></script>
 <script src="./data/test.js"></script>
 <script src="./lib/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
 <script>
 
@@ -85,5 +87,8 @@
 
     iyte.addTo(marker);
     marker.addTo(map);
+
+    // Leaflet Search
+    L.Control.geocoder().addTo(map);
 
 </script>
