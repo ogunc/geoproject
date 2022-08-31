@@ -1,4 +1,4 @@
-### Leaflet Exercise
+### Leaflet Exercise (Chapter 2 & Chapter 3)
 ##### From Basic to Advance
 
 - Basic Setup
