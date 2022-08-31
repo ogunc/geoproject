@@ -9,3 +9,11 @@
 - Search location by name (geocode)
 - Layer controller (https://leaflet-extras.github.io/leaflet-providers/preview/)
 - Zoom to layer function
+
+##### web-GIS
+
+- Bootstrap 4
+- Files and Folders Structure
+- Customization of Web-GIS
+- Navbar
+
